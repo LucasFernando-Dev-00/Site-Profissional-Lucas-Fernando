@@ -1,0 +1,218 @@
+/* --- CONFIGURAÇÕES GERAIS E FUNDO NEON --- */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Luz Branca - Canto Superior Esquerdo */
+body::before {
+    content: "";
+    position: fixed;
+    top: -100px;
+    left: -100px;
+    width: 500px;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.281); 
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Luz Vermelha - Canto Inferior Direito */
+body::after {
+    content: "";
+    position: fixed;
+    bottom: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    background: rgba(255, 0, 0, 0.25); 
+    border-radius: 50%;
+    filter: blur(130px);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* --- MENU NAV --- */
+ul {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    align-items: center;
+    padding: 20px 40px;
+    margin: 0;
+}
+
+nav a {
+   color: white;
+   text-decoration: none;
+   font-weight: bold;
+   transition: color 0.2s;
+}
+
+nav a:hover {
+    color: #ff3333;
+}
+
+/* --- FOTO DE PERFIL --- */
+img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 2px solid white;
+    object-fit: cover;
+}
+
+.center {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* --- LAYOUT GRID AVANÇADO (DISTRIBUIÇÃO DE TELA) --- */
+.site-layout {
+    display: grid;
+    /* Cria 3 colunas: duas para o conteúdo da esquerda e uma fixa para a Stack/Contatos */
+    grid-template-columns: 1fr 1fr 260px;
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 0 40px;
+    gap: 30px;
+    box-sizing: border-box;
+}
+
+/* Força o 'Sobre mim' a ocupar as duas primeiras colunas inteiras no topo */
+.sobre-mim-section {
+    grid-column: span 2;
+}
+
+/* Coluna Direita (Stack e Contatos) ocupa a terceira coluna e desce até o final */
+.right-column {
+    grid-column: 3;
+    grid-row: span 2; /* Faz o bloco da direita flutuar do lado de tudo */
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: flex-end;
+}
+
+/* --- COMPONENTES INTERNOS --- */
+.info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.courses-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.h-100 {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* Títulos das Seções */
+.section-title, .side-title {
+    color: #ffffff;
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    margin: 0;
+    padding-bottom: 6px;
+    border-bottom: 2px solid rgba(255, 0, 0, 0.6);
+    width: fit-content;
+}
+
+.side-title {
+    margin-bottom: 15px;
+}
+
+/* --- CARDS DE TEXTO (SOBRE MIM, FORMAÇÃO, CURSOS) --- */
+.bio-card, .info-card {
+    background: rgba(20, 20, 20, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    transition: all 0.25s ease-in-out;
+}
+
+.bio-card p { color: #dddddd; font-size: 16px; line-height: 1.6; margin: 0; }
+.info-card h4 { color: #ffffff; font-size: 18px; margin: 0 0 8px 0; }
+.info-card .subtext { color: #aaaaaa; font-size: 15px; margin: 0; line-height: 1.5; }
+.info-card .date-tag { display: inline-block; margin-top: 12px; font-size: 13px; color: #ff3333; font-style: italic; font-weight: bold; }
+
+.bio-card:hover, .info-card:hover {
+    border-color: rgba(255, 0, 0, 0.4);
+    background: rgba(25, 25, 25, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* --- BOXES DA DIREITA (STACK E CONTATOS) --- */
+.side-box {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 240px;
+}
+
+.tech-item, .contact-item {
+    background: rgba(20, 20, 20, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 12px 18px;
+    color: #aaaaaa;
+    font-size: 15px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+}
+
+.tech-item i, .contact-item i { font-size: 20px; transition: all 0.25s ease; }
+.tech-item i { filter: grayscale(100%); }
+.contact-item i { color: #aaaaaa; }
+
+/* Animação Hover */
+.tech-item:hover, .contact-item:hover {
+    color: #ffffff;
+    border-color: rgba(255, 0, 0, 0.6);
+    transform: translateX(-8px); 
+    background: rgba(30, 0, 0, 0.9);
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+}
+
+.tech-item:hover i { filter: grayscale(0%); }
+.contact-item:hover i { color: #ffffff; }
+
+/* --- RESPONSIVIDADE PARA CELULAR --- */
+@media (max-width: 900px) {
+    .site-layout {
+        grid-template-columns: 1fr; /* Vira uma única coluna no celular */
+        gap: 40px;
+        padding: 0 20px;
+    }
+    .sobre-mim-section {
+        grid-column: span 1;
+    }
+    .right-column {
+        grid-column: 1;
+        align-items: flex-start;
+    }
+    .side-box {
+        width: 100%;
+    }
+}
