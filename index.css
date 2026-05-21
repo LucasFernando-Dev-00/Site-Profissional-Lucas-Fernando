@@ -67,7 +67,11 @@ img {
     height: 150px;
     border-radius: 50%;
     border: 2px solid white;
-    object-fit: cover;
+    object-fit: cover; /* Garante que a foto preencha o círculo sem distorcer */
+    
+    /* ADICIONE ESSAS LINHAS PARA TIRAR O EMBAÇADO: */
+    image-rendering: -webkit-optimize-contrast; /* Para Safari e Chrome */
+    image-rendering: crisp-edges;               /* Para Firefox e outros */
 }
 
 .center {
