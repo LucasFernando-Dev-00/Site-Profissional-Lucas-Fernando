@@ -216,3 +216,23 @@ img {
         width: 100%;
     }
 }
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    
+    /* CAMINHO DA SUA IMAGEM: O 'rgba(0,0,0,0.8)' funciona como um óculos escuro sobre a imagem */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('./img/Captura de tela 2026-05-20 210458.png');
+    
+    background-size: cover;        /* Faz a imagem cobrir a tela toda sem distorcer */
+    background-position: center;   /* Centraliza os cubos na tela */
+    background-repeat: no-repeat;  /* Impede que a imagem fique se repetindo em telas grandes */
+    background-attachment: fixed;  /* Efeito Parallax: o fundo fica parado enquanto o texto rola */
+
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
